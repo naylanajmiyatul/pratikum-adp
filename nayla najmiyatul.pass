@@ -1,0 +1,74 @@
+program Tugas_Praktikum_2;
+var
+Paket, a, b, c: string;
+Jarak: integer;
+Harga, Harga_Total, Ongkir : Real ;
+
+begin
+       writeln;
+writeln('Paket dan Harga');
+writeln('==================');
+writeln('Paket A = Rp 25.000');
+writeln('Paket B = Rp 30.000');
+writeln('Paket C = Rp 45.000');
+
+write('Masukkan Paket Yang Anda inginkan A/B/C :');
+readln(Paket);
+
+if(Paket = A)then
+begin 
+{Harga := 25000}
+end 
+else if(Paket = B )then
+begin
+{Harga := 30000}
+end
+else if(Paket = C )then
+begin
+{Harga := 45000}
+end 
+else
+begin 
+writeln ('Maaf paket tidak ada, silahkan pilih paket yang tersedia');
+end;
+
+writeln;
+writeln('Jarak dan Ongkir');
+writeln('=======================');
+writeln('Kurang dari 500 meter: gratis');
+writeln('500 meter sampai 1,5km : Rp 10.000');
+writeln('lebih dari 1,5km : Rp 20.000');
+
+
+write('Masukkan Jarak Rumah ke Restoran dalam km :');
+readln(Jarak);
+
+if(jarak < 0.5)then
+begin
+{Ongkir := Gratis}
+end
+else if(jarak > 0.5) and (jarak < 1.5)then
+begin
+{Ongkir := 10000}
+end
+else if(jarak > 1.5)then
+begin 
+{Ongkir := 20000}
+end;
+
+Harga_total := Harga + Ongkir;
+
+writeln;
+writeln('=====================');
+
+writeln('Paket : ', Paket);
+readln(Paket);
+writeln('Jarak : ', Jarak);
+writeln('Harga : ', Harga);
+writeln('Ongkir: ', Ongkir);
+writeln('Harga_Total : ', Harga_Total);
+
+
+  
+  readln;
+end.
