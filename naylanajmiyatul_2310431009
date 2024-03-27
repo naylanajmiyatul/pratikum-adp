@@ -1,0 +1,17 @@
+program perulangan_baris;
+
+var
+  i, j, num: integer;
+
+begin
+  num := 1;
+  for i := 1 to 3 do
+  begin
+    for j := 1 to 8 do
+    begin
+      write(num, ' ');
+      num := num + 1;
+    end;
+    write('DOR ');
+  end;
+end.
