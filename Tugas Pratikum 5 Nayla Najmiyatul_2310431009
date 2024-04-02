@@ -1,0 +1,40 @@
+program Daftar_Belanja;
+
+var
+  HargaBarang: array[1..3] of Integer = (50000, 75000,     100000); // Harga barang per pcs
+  NamaBarang: array[1..3] of String = ('A', 'B', 'C'); // Nama barang
+  JumlahBeli: array[1..3] of Integer; // Jumlah barang yang dibeli
+  TotalHarga, TotalDiskon: Integer;
+  i: Integer;
+
+begin
+  TotalHarga := 0;
+  TotalDiskon := 0;
+  
+  // Input jumlah barang yang dibeli
+  for i := 1 to 3 do
+  begin
+    writeln('Jumlah Barang ', NamaBarang[i], ' yang ingin dibeli: ');
+    readln(JumlahBeli[i]);
+    TotalHarga := TotalHarga + (JumlahBeli[i] * HargaBarang[i]);
+    
+    // Berikan diskon untuk barang tertentu
+    if (NamaBarang[i] = 'A') and (JumlahBeli[i] > 3) then
+      TotalDiskon := TotalDiskon + (JumlahBeli[i] * HargaBarang[i] * 25 div 100);
+  end;
+  
+  // Berikan potongan harga untuk total belanja tertentu
+  if TotalHarga > 200000 then
+    TotalDiskon := TotalDiskon + (TotalHarga * 10 div 100);
+  
+  // Hitung total pembayaran setelah diskon
+  TotalHarga := TotalHarga - TotalDiskon;
+  
+  // Tampilkan daftar belanja beserta total pembayaran
+  writeln('Daftar Belanja:');
+  for i := 1 to 3 do
+    writeln(JumlahBeli[i], ' ', NamaBarang[i], ' = Rp ', JumlahBeli[i] * HargaBarang[i]);
+  
+  // Tampilkan total pembayaran setelah diskon
+  writeln('Total Pembayaran: Rp ', TotalHarga);
+end.
