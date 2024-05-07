@@ -1,0 +1,53 @@
+def transpose_matrix(matrix):
+    # Mendapatkan jumlah baris dan kolom dari matriks
+    rows = len(matrix)
+    cols = len(matrix[0])
+
+    # Membuat matriks transpose dengan baris dan kolom yang dialihkan
+    transpose = [[matrix[j][i] for j in range(rows)] for i in range(cols)]
+    return transpose
+
+def multiply_matrices(matrix1, matrix2):
+    # Mendapatkan ukuran matriks
+    rows1, cols1 = len(matrix1), len(matrix1[0])
+    rows2, cols2 = len(matrix2), len(matrix2[0])
+
+    # Inisialisasi matriks hasil
+    result = [[0 for _ in range(cols2)] for _ in range(rows1)]
+
+    # Perkalian matriks
+    for i in range(rows1):
+        for j in range(cols2):
+            for k in range(cols1):
+                result[i][j] += matrix1[i][k] * matrix2[k][j]
+    return result
+
+def main():
+    n = int(input("Masukkan ukuran n untuk matriks A: "))
+    p = int(input("Masukkan ukuran p untuk matriks B: "))
+    q = int(input("Masukkan ukuran q untuk matriks B: "))
+
+    # Matriks A
+    print("Matriks A (ukuran {}x{}):".format(n, n))
+    A = [[int(input("Masukkan elemen A[{}][{}]: ".format(i, j))) for j in range(n)] for i in range(n)]
+    print(A)
+
+    # Matriks B
+    print("\nMatriks B (ukuran {}x{}):".format(p, q))
+    B = [[int(input("Masukkan elemen B[{}][{}]: ".format(i, j))) for j in range(q)] for i in range(p)]
+    print(B)
+
+    # Matriks C (Hasil perkalian matriks A dan B)
+    C = multiply_matrices(A, B)
+    print("\nMatriks C (hasil perkalian matriks A dan B):")
+    print(C)
+
+    # Matriks D (Hasil penjumlahan matriks A transpose dan B transpose)
+    A_transpose = transpose_matrix(A)
+    B_transpose = transpose_matrix(B)
+    D = [[A_transpose[i][j] + B_transpose[i][j] for j in range(len(A_transpose[0]))] for i in range(len(A_transpose))]
+    print("\nMatriks D (hasil penjumlahan matriks A transpose dan B transpose):")
+    print(D)
+
+if __name__ == "__main__":
+    main()
