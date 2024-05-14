@@ -1,0 +1,28 @@
+def input_data(n):
+    data = []
+    for i in range(n):
+        data.append(float(input(f"Masukkan data ke-{i+1}: ")))
+    return data
+
+def hitung_mean(data):
+    return sum(data) / len(data)
+
+def hitung_modus(data):
+    return max(set(data), key=data.count)
+
+def hitung_variance(data):
+    mean = calculate_mean(data)
+    return sum((x - mean) ** 2 for x in data) / len(data)
+
+def display_results(mean, modus, variance):
+    print("Mean\t\t|", mean)
+    print("Modus\t\t|", modus)
+    print("Variance\t|", variance)
+
+# Contoh penggunaan
+n = int(input("Masukkan jumlah data: "))
+data = input_data(n)
+mean = calculate_mean(data)
+modus = calculate_modus(data)
+variance = calculate_variance(data)
+display_results(mean, modus, variance)
