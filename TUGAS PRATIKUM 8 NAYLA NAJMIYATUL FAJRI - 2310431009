@@ -1,0 +1,108 @@
+FILE_NAME = "movies.txt"
+
+# Fungsi untuk memuat data film dari file
+def load_data():
+    movies = {}
+    try:
+        with open(FILE_NAME, 'r') as file:
+            for line in file:
+                title, writer, director, release_year = line.strip().split('|')
+                movies[title] = {
+                    "Penulis Skenario": writer,
+                    "Sutradara": director,
+                    "Tahun Rilis": release_year
+                }
+    except FileNotFoundError:
+        pass
+    return movies
+
+# Fungsi untuk menyimpan data film ke file
+def save_data(movies):
+    with open(FILE_NAME, 'w') as file:
+        for title, details in movies.items():
+            file.write(f"{title}|{details['Penulis Skenario']}|{details['Sutradara']}|{details['Tahun Rilis']}\n")
+
+# Fungsi untuk menambah data film
+def add_movie(movies):
+    title = input("Masukkan judul film: ")
+    writer = input("Masukkan nama penulis skenario: ")
+    director = input("Masukkan nama sutradara: ")
+    release_year = input("Masukkan tahun rilis: ")
+    
+    movies[title] = {
+        "Penulis Skenario": writer,
+        "Sutradara": director,
+        "Tahun Rilis": release_year
+    }
+    print(f"Film '{title}' berhasil ditambahkan!")
+
+# Fungsi untuk menghapus data film
+def delete_movie(movies):
+    title = input("Masukkan judul film yang ingin dihapus: ")
+    if title in movies:
+        del movies[title]
+        print(f"Film '{title}' berhasil dihapus!")
+    else:
+        print(f"Film '{title}' tidak ditemukan!")
+
+# Fungsi untuk mengedit data film
+def edit_movie(movies):
+    title = input("Masukkan judul film yang ingin diedit: ")
+    if title in movies:
+        writer = input("Masukkan nama penulis skenario baru: ")
+        director = input("Masukkan nama sutradara baru: ")
+        release_year = input("Masukkan tahun rilis baru: ")
+
+        movies[title] = {
+            "Penulis Skenario": writer,
+            "Sutradara": director,
+            "Tahun Rilis": release_year
+        }
+        print(f"Film '{title}' berhasil diedit!")
+    else:
+        print(f"Film '{title}' tidak ditemukan!")
+
+# Fungsi untuk menampilkan data film
+def display_movies(movies):
+    if movies:
+        for title, details in movies.items():
+            print(f"\nJudul: {title}")
+            print(f"  Penulis Skenario: {details['Penulis Skenario']}")
+            print(f"  Sutradara: {details['Sutradara']}")
+            print(f"  Tahun Rilis: {details['Tahun Rilis']}")
+    else:
+        print("Tidak ada data film yang tersimpan.")
+
+# Fungsi utama untuk menampilkan menu dan mengelola interaksi 
+def main():
+    movies = load_data()
+    
+    while True:
+        print("\nMenu:")
+        print("1. Menambah data film")
+        print("2. Menghapus data film")
+        print("3. Mengedit data film")
+        print("4. Menampilkan data film")
+        print("5. Keluar")
+        
+        choice = input("Pilih menu (1-5): ")
+        
+        if choice == '1':
+            add_movie(movies)
+        elif choice == '2':
+            delete_movie(movies)
+        elif choice == '3':
+            edit_movie(movies)
+        elif choice == '4':
+            display_movies(movies)
+        elif choice == '5':
+            save_data(movies)
+            print("Data telah disimpan. Keluar dari program.")
+            break
+        else:
+            print("Pilihan tidak valid. Silakan coba lagi.")
+        
+        input("\nTekan Enter untuk kembali ke menu...")
+
+if __name__ == "__main__":
+    main()
