@@ -1,0 +1,27 @@
+from termcolor import colored,cprint
+
+for i in range(4):
+    cprint(" "*5,"red","on_red",end=" ")
+    print(" "*2,end=" ")
+cprint(" "*10,"red","on_red",end=" ")
+print()
+for i in range(3):
+    cprint(" "*5,"red","on_red",end=" ")
+    print(" "*2,end=" ")
+print()
+for i in range(3):
+    cprint(" "*5,"red","on_red",end=" ")
+    print(" "*2,end=" ")
+cprint(" "*5,"grey","on_dark_grey",end=" ")
+print(" "*2,end=" ")
+cprint(" "*5,"red","on_red",end=" ")
+print()
+for i in range(2): 
+    cprint(" "*5,"red","on_red",end=" ")
+    print(" "*11,end=" ")
+    cprint(" "*5,"red","on_red",end=" ")
+    print(" "*2,end=" ")
+    cprint(" "*5,"grey","on_dark_grey",end=" ")
+    print(" "*2,end=" ")
+    cprint(" "*5,"red","on_red")
+print()
